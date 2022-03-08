@@ -27,10 +27,5 @@
         <action
             android:id="@+id/action_carListFragment_to_carDetailsFragment"
             app:destination="@id/carDetailsFragment" />
-        <argument
-            android:name="carsId"
-            app:argType="com.gmail.autoriaapp.data.entity.SearchResult"
-            app:nullable="true"
-            android:defaultValue="@null" />
     </fragment>
 </navigation>
