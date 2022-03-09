@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gmail.carsriaapp.data.entity.Mark
+import com.gmail.carsriaapp.data.entity.Model
 import com.gmail.carsriaapp.data.repo.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
@@ -15,8 +16,10 @@ class SearchViewModel @Inject constructor(private val searchRepository: SearchRe
     ViewModel() {
 
     val markList: MutableLiveData<List<Mark>> = MutableLiveData(listOf(Mark()))
+    val modelList: MutableLiveData<List<Model>> = MutableLiveData(listOf(Model()))
 
     val mark: MutableLiveData<String> = MutableLiveData("")
+    val model: MutableLiveData<String> = MutableLiveData("")
 
     init {
         viewModelScope.launch {
@@ -27,5 +30,22 @@ class SearchViewModel @Inject constructor(private val searchRepository: SearchRe
         }
     }
 
+    fun addModels() {
+        viewModelScope.launch {
 
+
+
+
+            for (markName in markList.value!!) {
+                if (markName.name == mark.value) {
+                    val response = searchRepository.getMarks()
+                    if (response.isSuccessful) {
+                        modelList.value = searchRepository.getModels(markName.value).body()
+                    }
+
+                }
+            }
+        }
+
+    }
 }

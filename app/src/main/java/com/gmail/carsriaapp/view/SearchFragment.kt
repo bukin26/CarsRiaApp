@@ -39,7 +39,23 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }
 
 
+        viewModel.mark.observe(viewLifecycleOwner) {
+            viewModel.addModels()
+        }
 
+        viewModel.modelList.observe(viewLifecycleOwner) {
+
+            if (it != null) {
+                val modelMap = it.associate { it.name to it.value }
+                val adapter =
+                    ArrayAdapter(
+                        requireContext(),
+                        R.layout.car_mark_menu_item,
+                        modelMap.keys.toList()
+                    )
+                binding.modelText.setAdapter(adapter)
+            }
+        }
 
         return binding.root
     }
