@@ -9,4 +9,15 @@ class SearchRepository @Inject constructor(private val service: CarService) {
 
     suspend fun getModels(model: Int) = service.getModels(model)
 
+    suspend fun getCarsList(
+        marka: String,
+        model: String,
+        sYers: String,
+        poYers: String,
+        priceOt: String,
+        priceDo: String,
+    ) = service.getCarsList(marka, model, sYers, poYers, priceOt, priceDo)
+
 }
+
+

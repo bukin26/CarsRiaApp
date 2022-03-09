@@ -22,12 +22,12 @@ interface CarService {
 
     @GET("auto/search")
     suspend fun getCarsList(
-        @Query("marka_id[0]") marka: String?,
-        @Query("model_id[0]") model: String?,
-        @Query("s_yers[0]") sYers: String?,
-        @Query("po_yers[0]") poYers: String?,
-        @Query("price_ot") priceOt: String?,
-        @Query("price_do") priceDo: String?,
+        @Query("marka_id[0]") marka: String,
+        @Query("model_id[0]") model: String,
+        @Query("s_yers[0]") sYers: String,
+        @Query("po_yers[0]") poYers: String,
+        @Query("price_ot") priceOt: String,
+        @Query("price_do") priceDo: String,
         @Query("currency") currency: String = "1",
         @Query("category_id") categoryId: String = "1",
         @Query("api_key") apiKey: String = "G4J71fqfiqaKOA6qiBrimW5O1Malg52XopyUoow7",

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.gmail.carsriaapp.R
 import com.gmail.carsriaapp.databinding.FragmentSearchBinding
 import com.gmail.carsriaapp.viewmodel.SearchViewModel
@@ -55,6 +56,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             }
         }
 
+        binding.button.setOnClickListener {
+            viewModel.onSearchClick()
+            val action = SearchFragmentDirections.actionSearchFragmentToCarListFragment()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 
@@ -62,6 +69,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 
 }
