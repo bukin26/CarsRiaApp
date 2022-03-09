@@ -38,13 +38,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             binding.markText.setAdapter(adapter)
         }
 
-
         viewModel.mark.observe(viewLifecycleOwner) {
             viewModel.addModels()
         }
 
         viewModel.modelList.observe(viewLifecycleOwner) {
-
             if (it != null) {
                 val modelMap = it.associate { it.name to it.value }
                 val adapter =
