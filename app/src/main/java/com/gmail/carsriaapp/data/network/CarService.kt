@@ -1,5 +1,6 @@
 package com.gmail.carsriaapp.data.network
 
+import com.gmail.carsriaapp.data.entity.CarInfo
 import com.gmail.carsriaapp.data.entity.carsresponse.CarsResponse
 import com.gmail.carsriaapp.data.entity.Mark
 import com.gmail.carsriaapp.data.entity.Model
@@ -34,6 +35,12 @@ interface CarService {
         @Query("with_photo") withPhoto: String = "1",
         @Query("countpage") countpage: String = "50"
     ): Response<CarsResponse>
+
+    @GET("auto/info")
+    suspend fun getCar(
+        @Query("auto_id") autoId: String,
+        @Query("api_key") apiKey: String = "G4J71fqfiqaKOA6qiBrimW5O1Malg52XopyUoow7"
+    ): Response<CarInfo>
 
 
     companion object {
